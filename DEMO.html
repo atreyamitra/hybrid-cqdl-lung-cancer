@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Hybrid CQDL saved demo</title>
+<style>
+body{font:17px/1.6 system-ui,-apple-system,Segoe UI,sans-serif;color:#172a3b;background:#f6f8fa;max-width:980px;margin:40px auto;padding:24px}
+h1{font-size:36px;line-height:1.2}h2{margin-top:38px}table{width:100%;border-collapse:collapse;background:white}td,th{padding:11px;text-align:left;border:1px solid #cbd5df}code,pre{background:white;padding:2px 5px}pre{padding:18px;overflow:auto}.note{background:white;border-left:4px solid #7b8794;padding:14px 18px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}.card{background:white;padding:18px;border:1px solid #d8dee4;border-radius:8px}a{color:#165d98}
+</style>
+</head>
+<body>
+<h1>Hybrid Classical–Quantum Deep Learning</h1>
+<p>Semester 5 continuation · September 2026 · PyTorch + PennyLane · eight-qubit CPU simulation</p>
+<p class="note"><strong>Saved synthetic demonstration.</strong> This page summarizes completed local evidence. It does not diagnose CT scans, does not establish clinical accuracy, and contains no real patient data.</p>
+<h2>What changed</h2>
+<div class="grid">
+<div class="card"><strong>Validated data contract</strong><br>128×128 normalized <code>.npy</code> crops, patient IDs, binary labels, duplicate/content checks and leakage rejection.</div>
+<div class="card"><strong>Reproducible experiments</strong><br>Seeded CPU training, validation-loss checkpoint selection, fixed 0.5 threshold and held-out evaluation.</div>
+<div class="card"><strong>Evidence package</strong><br>Metrics, predictions, split manifests, configuration, checkpoint round-trip tests and CI workflow.</div>
+</div>
+<h2>Measured synthetic evidence</h2>
+<p>Two five-epoch runs used 24 geometric fixtures with distinct mock patient IDs: 16 train, 4 validation and 4 test. Seed 42, Adam 1e-4, batch size 4.</p>
+<table>
+<tr><th>Model</th><th>Parameters</th><th>Accuracy</th><th>Precision</th><th>Recall</th><th>Specificity</th><th>F1</th><th>AUC</th></tr>
+<tr><td>Classical CNN</td><td>7,391,873</td><td>0.75</td><td>1.00</td><td>0.50</td><td>1.00</td><td>0.667</td><td>1.00</td></tr>
+<tr><td>Hybrid</td><td>479,657</td><td>0.50</td><td>0.50</td><td>1.00</td><td>0.00</td><td>0.667</td><td>1.00</td></tr>
+</table>
+<p>The hybrid predicted all four test fixtures positive at threshold 0.5. AUC measures ranking, so AUC 1.0 can coexist with poor threshold accuracy on this four-example test set. These numbers establish no medical performance or model superiority.</p>
+<h2>Architecture</h2>
+<p>128×128 grayscale crop → Conv(1,32,3) → ReLU → MaxPool(2) → Conv(32,64,3) → ReLU → MaxPool(2) → flatten 57,600 → Linear(57,600,8) → RX AngleEmbedding → three BasicEntanglerLayers → eight Pauli-Z expectations → Linear(8,1) → sigmoid.</p>
+<p>The quantum block is a variational quantum layer, not a full QCNN with quantum pooling.</p>
+<h2>Example saved hybrid prediction</h2>
+<pre>{
+  "probability_class_1": 0.5108065605163574,
+  "predicted_label": 1,
+  "training_data_kind": "synthetic",
+  "clinical_validation": false
+}</pre>
+<h2>Reproduce locally</h2>
+<pre>python -m src.demo_data --out demo_data
+python -m src.train --manifest demo_data/manifest.csv --out runs/demo_hybrid --model hybrid --epochs 1 --data-kind synthetic
+python -m src.predict --checkpoint runs/demo_hybrid/best.pt --image demo_data/fixture_23.npy</pre>
+<p>The GitHub repository intentionally excludes generated model checkpoints, bulk synthetic arrays and result plot binaries from Git history. The full Semester 5 submission archive retains those generated artifacts.</p>
+<h2>Reserved for next semester</h2>
+<p>Real LIDC-IDRI cohort evaluation, matched eight-feature classical ablation, Grad-CAM, circuit-depth/noise analysis, multiple seeds and uncertainty estimates. Hardware, multimodal and federated learning remain longer-term ideas.</p>
+</body>
+</html>

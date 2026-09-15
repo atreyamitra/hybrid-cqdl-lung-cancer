@@ -1,0 +1,17 @@
+test_bad_probabilities (test_project.DataTests.test_bad_probabilities) ... ok
+test_bad_shape (test_project.DataTests.test_bad_shape) ... ok
+test_duplicates (test_project.DataTests.test_duplicates) ... ok
+test_fixture (test_project.DataTests.test_fixture) ... ok
+test_leakage (test_project.DataTests.test_leakage) ... ok
+test_metrics (test_project.DataTests.test_metrics) ... ok
+test_missing_class (test_project.DataTests.test_missing_class) ... ok
+test_split_repeatability (test_project.DataTests.test_split_repeatability) ... ok
+test_undefined (test_project.DataTests.test_undefined) ... ok
+test_checkpoint_roundtrip (test_project.ModelTests.test_checkpoint_roundtrip) ... ok
+test_hybrid_gradients (test_project.ModelTests.test_hybrid_gradients) ... ok
+test_parameter_counts (test_project.ModelTests.test_parameter_counts) ... ok
+
+----------------------------------------------------------------------
+Ran 12 tests in 2.846s
+
+OK

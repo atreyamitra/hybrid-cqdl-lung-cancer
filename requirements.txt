@@ -1,6 +1,5 @@
-torch
-torchvision
-pennylane
-numpy
-matplotlib
-scikit-learn
+torch==2.14.0
+pennylane==0.45.1
+numpy==2.5.3
+matplotlib==3.10.8
+scikit-learn==1.8.0

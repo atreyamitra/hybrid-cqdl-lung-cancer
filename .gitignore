@@ -1,0 +1,10 @@
+.venv/
+__pycache__/
+*.pyc
+real_data/
+runs/
+ci_data/
+demo_data/
+results/**/*.pt
+results/**/*.png
+.DS_Store
