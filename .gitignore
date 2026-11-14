@@ -8,3 +8,8 @@ demo_data/
 results/**/*.pt
 results/**/*.png
 .DS_Store
+experiments/**/*.pt
+experiments/**/*.png
+experiments/**/split_manifest.csv
+docs/*.png
+docs/figures/*.png
