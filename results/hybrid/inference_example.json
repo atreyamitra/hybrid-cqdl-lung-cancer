@@ -1,6 +1,10 @@
 {
-  "probability_class_1": 0.5108065605163574,
+  "model": "hybrid",
+  "checkpoint_epoch": 5,
+  "score_class_1": 0.5108065605163574,
   "predicted_label": 1,
+  "threshold": 0.5,
   "training_data_kind": "synthetic",
+  "calibrated_probability": false,
   "clinical_validation": false
 }

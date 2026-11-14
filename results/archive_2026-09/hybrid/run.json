@@ -1,0 +1,32 @@
+{
+  "config": {
+    "manifest": "demo_data/manifest.csv",
+    "out": "results/hybrid",
+    "model": "hybrid",
+    "epochs": 5,
+    "batch_size": 4,
+    "seed": 42,
+    "lr": 0.0001,
+    "patience": 5,
+    "data_kind": "synthetic"
+  },
+  "python": "3.12.14",
+  "torch": "2.14.0+cpu",
+  "pennylane": "0.45.1",
+  "numpy": "2.5.3",
+  "manifest_sha256": "f568b38e2d2dd405e420cb5f72bdb43fba78a23d992da6687273e5bcd5376f87",
+  "splits": {
+    "train": {
+      "images": 16,
+      "patients": 16
+    },
+    "val": {
+      "images": 4,
+      "patients": 4
+    },
+    "test": {
+      "images": 4,
+      "patients": 4
+    }
+  }
+}

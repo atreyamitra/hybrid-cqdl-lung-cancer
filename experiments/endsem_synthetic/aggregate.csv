@@ -1,0 +1,5 @@
+config,parameters,n_runs,accuracy_mean,accuracy_std,accuracy_n_defined,precision_mean,precision_std,precision_n_defined,recall_mean,recall_std,recall_n_defined,specificity_mean,specificity_std,specificity_n_defined,f1_mean,f1_std,f1_n_defined,roc_auc_mean,roc_auc_std,roc_auc_n_defined,train_seconds_mean,train_seconds_std,train_seconds_n_defined
+matched,479705,3,0.75,0.25,3,0.7222,0.2546,3,1.0,0.0,3,0.5,0.5,3,0.8222,0.1678,3,1.0,0.0,3,0.5003,0.101,3
+hybrid_L1,479641,3,0.6667,0.2887,3,0.75,0.3536,2,0.6667,0.5774,3,0.6667,0.5774,3,0.5556,0.5092,3,1.0,0.0,3,0.6943,0.0133,3
+hybrid_L3,479657,3,0.5,0.0,3,0.5,0.0,3,1.0,0.0,3,0.0,0.0,3,0.6667,0.0,3,1.0,0.0,3,0.8944,0.0449,3
+classical,7391873,3,0.75,0.0,3,0.7778,0.1925,3,0.8333,0.2887,3,0.6667,0.2887,3,0.7556,0.077,3,1.0,0.0,3,1.0936,0.0613,3

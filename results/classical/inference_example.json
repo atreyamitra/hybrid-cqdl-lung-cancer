@@ -1,0 +1,10 @@
+{
+  "model": "classical",
+  "checkpoint_epoch": 4,
+  "score_class_1": 0.4833189845085144,
+  "predicted_label": 0,
+  "threshold": 0.5,
+  "training_data_kind": "synthetic",
+  "calibrated_probability": false,
+  "clinical_validation": false
+}

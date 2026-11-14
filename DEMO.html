@@ -1,48 +1,58 @@
-<!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Hybrid CQDL saved demo</title>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Hybrid CQDL: saved evidence (Semester 5)</title>
 <style>
-body{font:17px/1.6 system-ui,-apple-system,Segoe UI,sans-serif;color:#172a3b;background:#f6f8fa;max-width:980px;margin:40px auto;padding:24px}
-h1{font-size:36px;line-height:1.2}h2{margin-top:38px}table{width:100%;border-collapse:collapse;background:white}td,th{padding:11px;text-align:left;border:1px solid #cbd5df}code,pre{background:white;padding:2px 5px}pre{padding:18px;overflow:auto}.note{background:white;border-left:4px solid #7b8794;padding:14px 18px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}.card{background:white;padding:18px;border:1px solid #d8dee4;border-radius:8px}a{color:#165d98}
-</style>
-</head>
-<body>
-<h1>Hybrid Classical–Quantum Deep Learning</h1>
-<p>Semester 5 continuation · September 2026 · PyTorch + PennyLane · eight-qubit CPU simulation</p>
-<p class="note"><strong>Saved synthetic demonstration.</strong> This page summarizes completed local evidence. It does not diagnose CT scans, does not establish clinical accuracy, and contains no real patient data.</p>
-<h2>What changed</h2>
-<div class="grid">
-<div class="card"><strong>Validated data contract</strong><br>128×128 normalized <code>.npy</code> crops, patient IDs, binary labels, duplicate/content checks and leakage rejection.</div>
-<div class="card"><strong>Reproducible experiments</strong><br>Seeded CPU training, validation-loss checkpoint selection, fixed 0.5 threshold and held-out evaluation.</div>
-<div class="card"><strong>Evidence package</strong><br>Metrics, predictions, split manifests, configuration, checkpoint round-trip tests and CI workflow.</div>
-</div>
-<h2>Measured synthetic evidence</h2>
-<p>Two five-epoch runs used 24 geometric fixtures with distinct mock patient IDs: 16 train, 4 validation and 4 test. Seed 42, Adam 1e-4, batch size 4.</p>
-<table>
-<tr><th>Model</th><th>Parameters</th><th>Accuracy</th><th>Precision</th><th>Recall</th><th>Specificity</th><th>F1</th><th>AUC</th></tr>
-<tr><td>Classical CNN</td><td>7,391,873</td><td>0.75</td><td>1.00</td><td>0.50</td><td>1.00</td><td>0.667</td><td>1.00</td></tr>
-<tr><td>Hybrid</td><td>479,657</td><td>0.50</td><td>0.50</td><td>1.00</td><td>0.00</td><td>0.667</td><td>1.00</td></tr>
-</table>
-<p>The hybrid predicted all four test fixtures positive at threshold 0.5. AUC measures ranking, so AUC 1.0 can coexist with poor threshold accuracy on this four-example test set. These numbers establish no medical performance or model superiority.</p>
-<h2>Architecture</h2>
-<p>128×128 grayscale crop → Conv(1,32,3) → ReLU → MaxPool(2) → Conv(32,64,3) → ReLU → MaxPool(2) → flatten 57,600 → Linear(57,600,8) → RX AngleEmbedding → three BasicEntanglerLayers → eight Pauli-Z expectations → Linear(8,1) → sigmoid.</p>
-<p>The quantum block is a variational quantum layer, not a full QCNN with quantum pooling.</p>
-<h2>Example saved hybrid prediction</h2>
-<pre>{
-  "probability_class_1": 0.5108065605163574,
-  "predicted_label": 1,
-  "training_data_kind": "synthetic",
-  "clinical_validation": false
+body{font:17px/1.6 system-ui,Segoe UI,Arial,sans-serif;color:#172a3b;background:#f6f8fa;max-width:1080px;margin:32px auto;padding:0 24px}
+h1{font-size:34px;line-height:1.2;margin-bottom:4px} h2{margin-top:44px;border-top:1px solid #cbd5df;padding-top:24px}
+table{width:100%;border-collapse:collapse;background:#fff;font-size:15px} td,th{padding:8px 10px;text-align:left;border:1px solid #cbd5df}
+th{background:#eef3f8} img{max-width:100%;background:#fff;margin:8px 0;border:1px solid #e1e7ee}
+.note{background:#fff7e6;border:1px solid #f0d49a;padding:12px 16px;border-radius:6px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px} pre{background:#fff;padding:14px;border:1px solid #e1e7ee;overflow:auto;font-size:14px}
+nav a{margin-right:14px;color:#165d98} small{color:#52606d}
+</style></head><body>
+<h1>Hybrid Classical–Quantum Deep Learning for Lung Cancer Detection</h1>
+<p><small>Semester 5 PBL · Manipal University Jaipur · Atreya Mitra (2427030002) and Debraj Mondal (2427030392) · Section H · Guide: Mr Tapan Kumar Dey · 2026–27</small></p>
+<p class="note"><strong>Offline evidence viewer.</strong> This page displays saved results from completed local runs on <strong>24 synthetic geometric fixtures</strong>. It performs no inference in the browser, uses no patient data and makes no diagnostic claim. Run the Python CLI for live local inference.</p>
+<p><strong>Interactive version:</strong> <code>streamlit run app/streamlit_app.py</code> scores crops with saved checkpoints and shows every experiment result. This static page needs no installation.</p>
+<nav><a href="#arch">Architecture</a><a href="#exp">3-seed experiment</a><a href="#results">Results</a><a href="#why">Why the hybrid scores sit near 0.5</a><a href="#repro">Reproducibility</a><a href="#next">Next semester</a></nav>
+
+<h2 id="arch">What is implemented</h2>
+<p>A PyTorch CNN feature extractor feeds an eight-feature projection into an eight-qubit variational quantum layer (PennyLane, analytic <code>default.qubit</code> simulator, backpropagation). The classical comparator keeps the original 128-unit dense head. This is a CNN with a variational quantum layer, not a full quantum convolution/pooling network.</p>
+<img alt="Hybrid architecture block diagram" src="docs/figures/fig_architecture.png">
+<img alt="Eight-qubit circuit expanded to RX and CNOT gates" src="docs/figures/fig_circuit_gates.png">
+<img alt="Example synthetic fixtures" src="docs/figures/fig_fixtures.png">
+
+<h2 id="results">Held-out results on 4 synthetic test fixtures</h2>
+<p>Seed 42, Adam learning rate 0.0001, batch 4, at most 5 epochs, checkpoint chosen by lowest validation loss, fixed threshold 0.5. Four test examples cannot measure lung-cancer detection; these numbers verify that the pipeline runs end to end.</p>
+<table><tr><th>Model</th><th>Parameters</th><th>Epoch</th><th>Acc.</th><th>Prec.</th><th>Recall</th><th>Spec.</th><th>F1</th><th>AUC</th><th>Confusion [[TN,FP],[FN,TP]]</th></tr><tr><td>Classical CNN</td><td>7,391,873</td><td>4</td><td>0.750</td><td>1.000</td><td>0.500</td><td>1.000</td><td>0.667</td><td>1.000</td><td>[[2, 0], [1, 1]]</td></tr><tr><td>Hybrid CNN + quantum layer</td><td>479,657</td><td>5</td><td>0.500</td><td>0.500</td><td>1.000</td><td>0.000</td><td>0.667</td><td>1.000</td><td>[[0, 2], [0, 2]]</td></tr></table>
+<p>The parameter difference comes from the 128-unit versus 8-unit dense bottleneck, not from a demonstrated quantum efficiency gain.</p>
+<img alt="Loss curves on a shared axis" src="docs/figures/fig_loss_shared_axis.png">
+<img alt="Test scores against the 0.5 threshold" src="docs/figures/fig_test_scores.png">
+<table><tr><th>Model</th><th>Test crop</th><th>Label</th><th>Score</th></tr><tr><td>classical</td><td>demo_data/fixture_20.npy</td><td>0</td><td>0.4501</td></tr><tr><td>classical</td><td>demo_data/fixture_21.npy</td><td>1</td><td>0.5054</td></tr><tr><td>classical</td><td>demo_data/fixture_22.npy</td><td>0</td><td>0.4705</td></tr><tr><td>classical</td><td>demo_data/fixture_23.npy</td><td>1</td><td>0.4833</td></tr><tr><td>hybrid</td><td>demo_data/fixture_20.npy</td><td>0</td><td>0.5067</td></tr><tr><td>hybrid</td><td>demo_data/fixture_21.npy</td><td>1</td><td>0.5112</td></tr><tr><td>hybrid</td><td>demo_data/fixture_22.npy</td><td>0</td><td>0.5085</td></tr><tr><td>hybrid</td><td>demo_data/fixture_23.npy</td><td>1</td><td>0.5108</td></tr></table>
+<div class="grid"><img alt="Classical confusion matrix" src="results/classical/confusion_matrix.png"><img alt="Hybrid confusion matrix" src="results/hybrid/confusion_matrix.png"></div>
+
+<h2 id="why">Why the hybrid scores sit near 0.5</h2>
+<p>The diagnostic CLI reads the trained hybrid checkpoint and measures the signal at the quantum layer for all 24 fixtures. Encoded angles reach about 1 radian, but the eight Pauli-Z expectation values vary across images by a standard deviation of only 0.0144 on a −1 to +1 scale, and the Linear(8,1) weights average 0.1092 in magnitude. The classifier therefore receives nearly the same input for every image, so every score lies between 0.5056 and 0.5154. This is an observation about this short synthetic run, not a general property of quantum layers.</p>
+<img alt="Spread of expectation values across fixtures" src="docs/figures/fig_hybrid_expvals.png">
+<pre>python -m src.diagnose --checkpoint results/hybrid/best.pt --manifest demo_data/manifest.csv</pre>
+
+<h2>Reloaded-checkpoint prediction</h2>
+<pre>python -m src.predict --checkpoint results/hybrid/best.pt --image demo_data/fixture_23.npy
+{
+  &quot;model&quot;: &quot;hybrid&quot;,
+  &quot;checkpoint_epoch&quot;: 5,
+  &quot;score_class_1&quot;: 0.5108065605163574,
+  &quot;predicted_label&quot;: 1,
+  &quot;threshold&quot;: 0.5,
+  &quot;training_data_kind&quot;: &quot;synthetic&quot;,
+  &quot;calibrated_probability&quot;: false,
+  &quot;clinical_validation&quot;: false
 }</pre>
-<h2>Reproduce locally</h2>
-<pre>python -m src.demo_data --out demo_data
-python -m src.train --manifest demo_data/manifest.csv --out runs/demo_hybrid --model hybrid --epochs 1 --data-kind synthetic
-python -m src.predict --checkpoint runs/demo_hybrid/best.pt --image demo_data/fixture_23.npy</pre>
-<p>The GitHub repository intentionally excludes generated model checkpoints, bulk synthetic arrays and result plot binaries from Git history. The full Semester 5 submission archive retains those generated artifacts.</p>
-<h2>Reserved for next semester</h2>
-<p>Real LIDC-IDRI cohort evaluation, matched eight-feature classical ablation, Grad-CAM, circuit-depth/noise analysis, multiple seeds and uncertainty estimates. Hardware, multimodal and federated learning remain longer-term ideas.</p>
-</body>
-</html>
+<p>The score is a sigmoid output of a model trained on synthetic shapes. It is not a calibrated probability and not a medical risk.</p>
+
+<h2 id="repro">Reproducibility check</h2>
+<p>The September 2026 runs were repeated with the November 2026 code. Every metric, confusion matrix and selected epoch is identical; losses and scores differ by at most 6.0e-08 (float32 rounding). Elapsed time changed from 2.402 s / 1.542 s to 1.307 s / 1.013 s (classical / hybrid), so runtime is not a benchmark. Automated tests: 39 passed.</p>
+
+<h2 id="exp">End-semester experiment: 3 seeds × 4 configurations</h2><p class="note">Synthetic geometric fixtures only. With 4 test images per run, these figures show execution and preliminary behaviour, not clinical performance or statistically robust differences. Std is the sample standard deviation across seeds; undefined metrics are excluded and counted in n_defined. train_seconds is local wall-clock time on the recorded machine, not a benchmark.</p><table><tr><th>Configuration</th><th>Parameters</th><th>Runs</th><th>Accuracy</th><th>Precision</th><th>Recall</th><th>Specificity</th><th>F1</th><th>AUC</th><th>Train s</th></tr><tr><td>Matched-bottleneck classical</td><td>479,705</td><td>3</td><td>0.750 ± 0.250</td><td>0.722 ± 0.255</td><td>1.000 ± 0.000</td><td>0.500 ± 0.500</td><td>0.822 ± 0.168</td><td>1.000 ± 0.000</td><td>0.500 ± 0.101</td></tr><tr><td>Hybrid, 1 entangling layer</td><td>479,641</td><td>3</td><td>0.667 ± 0.289</td><td>0.750 ± 0.354 (n=2/3)</td><td>0.667 ± 0.577</td><td>0.667 ± 0.577</td><td>0.556 ± 0.509</td><td>1.000 ± 0.000</td><td>0.694 ± 0.013</td></tr><tr><td>Hybrid, 3 entangling layers (default)</td><td>479,657</td><td>3</td><td>0.500 ± 0.000</td><td>0.500 ± 0.000</td><td>1.000 ± 0.000</td><td>0.000 ± 0.000</td><td>0.667 ± 0.000</td><td>1.000 ± 0.000</td><td>0.894 ± 0.045</td></tr><tr><td>Original classical CNN (128-unit head)</td><td>7,391,873</td><td>3</td><td>0.750 ± 0.000</td><td>0.778 ± 0.192</td><td>0.833 ± 0.289</td><td>0.667 ± 0.289</td><td>0.756 ± 0.077</td><td>1.000 ± 0.000</td><td>1.094 ± 0.061</td></tr></table><p>Mean ± sample standard deviation across seeds 42, 43, 44 on one fixed 16/4/4 split. Source: <code>experiments/endsem_synthetic/</code>.</p>
+<h2 id="next">Reserved for next semester</h2>
+<p>Verified real CT cohort and preprocessing pipeline, real-data training and evaluation of all four configurations, Grad-CAM, quantum noise studies, hyperparameter search, uncertainty analysis with more test data, and external validation. Quantum hardware, multimodal and federated learning remain longer-term directions. The historical 88.5%, 90.2% and 94.8% figures were never reproduced and are not results of this project.</p>
+</body></html>

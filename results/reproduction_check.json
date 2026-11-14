@@ -1,0 +1,21 @@
+{
+  "purpose": "Re-run of the September 2026 synthetic experiments with the November 2026 code (same manifest, seed 42, 5 epochs).",
+  "environment": "Linux CPU, Python 3.12.3, torch 2.14.0 (PyPI build, run on CPU), PennyLane 0.45.1, NumPy 2.5.3",
+  "models": {
+    "classical": {
+      "max_abs_loss_difference": 5.960464477539063e-08,
+      "max_abs_test_score_difference": 5.960464477539063e-08,
+      "metrics_identical": true,
+      "elapsed_seconds_sept": 2.402,
+      "elapsed_seconds_nov": 1.307
+    },
+    "hybrid": {
+      "max_abs_loss_difference": 5.960464477539063e-08,
+      "max_abs_test_score_difference": 5.960464477539063e-08,
+      "metrics_identical": true,
+      "elapsed_seconds_sept": 1.542,
+      "elapsed_seconds_nov": 1.013
+    }
+  },
+  "conclusion": "All thresholded metrics, AUC, confusion matrices and selected epochs are identical; losses and scores agree to float32 rounding. Elapsed time differs between machines and runs, so it is not a benchmark."
+}

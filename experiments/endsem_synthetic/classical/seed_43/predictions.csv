@@ -1,0 +1,5 @@
+patient_id,path,label,probability
+synthetic_20,demo_data/fixture_20.npy,0,0.49593842029571533
+synthetic_21,demo_data/fixture_21.npy,1,0.5293594598770142
+synthetic_22,demo_data/fixture_22.npy,0,0.5109911561012268
+synthetic_23,demo_data/fixture_23.npy,1,0.5208269357681274

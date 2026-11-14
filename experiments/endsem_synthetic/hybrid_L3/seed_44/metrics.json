@@ -1,0 +1,31 @@
+{
+  "n": 4,
+  "threshold": 0.5,
+  "accuracy": 0.5,
+  "precision": 0.5,
+  "recall": 1.0,
+  "specificity": 0.0,
+  "f1": 0.6666666666666666,
+  "roc_auc": 1.0,
+  "confusion_matrix": [
+    [
+      0,
+      2
+    ],
+    [
+      0,
+      2
+    ]
+  ],
+  "data_kind": "synthetic",
+  "model": "hybrid",
+  "q_layers": 3,
+  "architecture": "Hybrid CNN + 8-qubit variational layer, 3 entangling layers",
+  "seed": 44,
+  "selected_epoch": 4,
+  "epochs_run": 5,
+  "parameters": 479657,
+  "train_seconds": 0.8426759480000214,
+  "elapsed_seconds": 0.8678265560000114,
+  "clinical_validation": false
+}
