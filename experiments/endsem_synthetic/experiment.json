@@ -1,0 +1,40 @@
+{
+  "configs": {
+    "matched": {
+      "model": "matched",
+      "q_layers": null,
+      "label": "Matched-bottleneck classical"
+    },
+    "hybrid_L1": {
+      "model": "hybrid",
+      "q_layers": 1,
+      "label": "Hybrid, 1 entangling layer"
+    },
+    "hybrid_L3": {
+      "model": "hybrid",
+      "q_layers": 3,
+      "label": "Hybrid, 3 entangling layers (default)"
+    },
+    "classical": {
+      "model": "classical",
+      "q_layers": null,
+      "label": "Original classical CNN (128-unit head)"
+    }
+  },
+  "seeds": [
+    42,
+    43,
+    44
+  ],
+  "manifest": "demo_data/manifest.csv",
+  "data_kind": "synthetic",
+  "epochs": 5,
+  "batch_size": 4,
+  "lr": 0.0001,
+  "patience": 5,
+  "split_seed": 42,
+  "threshold": 0.5,
+  "selection": "lowest validation loss",
+  "python": "3.12.3",
+  "platform": "Linux-6.18.44-fc-v470-x86_64-with-glibc2.39"
+}

@@ -6,7 +6,7 @@
       "max_abs_loss_difference": 5.960464477539063e-08,
       "max_abs_test_score_difference": 5.960464477539063e-08,
       "metrics_identical": true,
-      "elapsed_seconds_sept": 1.542,
+      "elapsed_seconds_sept": 2.402,
       "elapsed_seconds_nov": 1.307
     },
     "hybrid": {

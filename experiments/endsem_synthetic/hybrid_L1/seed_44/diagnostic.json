@@ -1,0 +1,14 @@
+{
+  "checkpoint_epoch": 5,
+  "images": 24,
+  "training_data_kind": "synthetic",
+  "angle_abs_mean": 0.8083,
+  "angle_abs_max": 2.1925,
+  "expval_min": -0.4411,
+  "expval_max": 0.4741,
+  "expval_std_across_images_mean": 0.0261,
+  "classifier_weight_abs_mean": 0.1047,
+  "score_min": 0.5442,
+  "score_max": 0.5543,
+  "note": "Spread across images, not accuracy. Synthetic checkpoints say nothing about CT behaviour."
+}

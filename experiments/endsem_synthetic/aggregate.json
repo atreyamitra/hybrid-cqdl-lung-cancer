@@ -1,0 +1,293 @@
+{
+  "note": "Synthetic geometric fixtures only. With 4 test images per run, these figures show execution and preliminary behaviour, not clinical performance or statistically robust differences. Std is the sample standard deviation across seeds; undefined metrics are excluded and counted in n_defined. train_seconds is local wall-clock time on the recorded machine, not a benchmark.",
+  "configs": [
+    {
+      "config": "matched",
+      "label": "Matched-bottleneck classical",
+      "model": "matched",
+      "q_layers": null,
+      "parameters": 479705,
+      "seeds": [
+        42,
+        43,
+        44
+      ],
+      "n_runs": 3,
+      "data_kind": [
+        "synthetic"
+      ],
+      "n_test": [
+        4
+      ],
+      "predicted_positive_per_run": [
+        3,
+        4,
+        2
+      ],
+      "accuracy": {
+        "mean": 0.75,
+        "std": 0.25,
+        "n_defined": 3,
+        "n_runs": 3
+      },
+      "precision": {
+        "mean": 0.7222222222222222,
+        "std": 0.2545875386086578,
+        "n_defined": 3,
+        "n_runs": 3
+      },
+      "recall": {
+        "mean": 1.0,
+        "std": 0.0,
+        "n_defined": 3,
+        "n_runs": 3
+      },
+      "specificity": {
+        "mean": 0.5,
+        "std": 0.5,
+        "n_defined": 3,
+        "n_runs": 3
+      },
+      "f1": {
+        "mean": 0.8222222222222223,
+        "std": 0.16777409856157224,
+        "n_defined": 3,
+        "n_runs": 3
+      },
+      "roc_auc": {
+        "mean": 1.0,
+        "std": 0.0,
+        "n_defined": 3,
+        "n_runs": 3
+      },
+      "train_seconds": {
+        "mean": 0.500256547333341,
+        "std": 0.10095652153951927,
+        "n_defined": 3,
+        "n_runs": 3
+      },
+      "selected_epoch": {
+        "mean": 5.0,
+        "std": 0.0,
+        "n_defined": 3,
+        "n_runs": 3
+      }
+    },
+    {
+      "config": "hybrid_L1",
+      "label": "Hybrid, 1 entangling layer",
+      "model": "hybrid",
+      "q_layers": 1,
+      "parameters": 479641,
+      "seeds": [
+        42,
+        43,
+        44
+      ],
+      "n_runs": 3,
+      "data_kind": [
+        "synthetic"
+      ],
+      "n_test": [
+        4
+      ],
+      "predicted_positive_per_run": [
+        0,
+        2,
+        4
+      ],
+      "accuracy": {
+        "mean": 0.6666666666666666,
+        "std": 0.28867513459481287,
+        "n_defined": 3,
+        "n_runs": 3
+      },
+      "precision": {
+        "mean": 0.75,
+        "std": 0.3535533905932738,
+        "n_defined": 2,
+        "n_runs": 3
+      },
+      "recall": {
+        "mean": 0.6666666666666666,
+        "std": 0.5773502691896257,
+        "n_defined": 3,
+        "n_runs": 3
+      },
+      "specificity": {
+        "mean": 0.6666666666666666,
+        "std": 0.5773502691896257,
+        "n_defined": 3,
+        "n_runs": 3
+      },
+      "f1": {
+        "mean": 0.5555555555555555,
+        "std": 0.5091750772173156,
+        "n_defined": 3,
+        "n_runs": 3
+      },
+      "roc_auc": {
+        "mean": 1.0,
+        "std": 0.0,
+        "n_defined": 3,
+        "n_runs": 3
+      },
+      "train_seconds": {
+        "mean": 0.6943245929999952,
+        "std": 0.013254433362513512,
+        "n_defined": 3,
+        "n_runs": 3
+      },
+      "selected_epoch": {
+        "mean": 5.0,
+        "std": 0.0,
+        "n_defined": 3,
+        "n_runs": 3
+      }
+    },
+    {
+      "config": "hybrid_L3",
+      "label": "Hybrid, 3 entangling layers (default)",
+      "model": "hybrid",
+      "q_layers": 3,
+      "parameters": 479657,
+      "seeds": [
+        42,
+        43,
+        44
+      ],
+      "n_runs": 3,
+      "data_kind": [
+        "synthetic"
+      ],
+      "n_test": [
+        4
+      ],
+      "predicted_positive_per_run": [
+        4,
+        4,
+        4
+      ],
+      "accuracy": {
+        "mean": 0.5,
+        "std": 0.0,
+        "n_defined": 3,
+        "n_runs": 3
+      },
+      "precision": {
+        "mean": 0.5,
+        "std": 0.0,
+        "n_defined": 3,
+        "n_runs": 3
+      },
+      "recall": {
+        "mean": 1.0,
+        "std": 0.0,
+        "n_defined": 3,
+        "n_runs": 3
+      },
+      "specificity": {
+        "mean": 0.0,
+        "std": 0.0,
+        "n_defined": 3,
+        "n_runs": 3
+      },
+      "f1": {
+        "mean": 0.6666666666666666,
+        "std": 0.0,
+        "n_defined": 3,
+        "n_runs": 3
+      },
+      "roc_auc": {
+        "mean": 1.0,
+        "std": 0.0,
+        "n_defined": 3,
+        "n_runs": 3
+      },
+      "train_seconds": {
+        "mean": 0.8943822786666829,
+        "std": 0.04492482607211343,
+        "n_defined": 3,
+        "n_runs": 3
+      },
+      "selected_epoch": {
+        "mean": 4.666666666666667,
+        "std": 0.5773502691896257,
+        "n_defined": 3,
+        "n_runs": 3
+      }
+    },
+    {
+      "config": "classical",
+      "label": "Original classical CNN (128-unit head)",
+      "model": "classical",
+      "q_layers": null,
+      "parameters": 7391873,
+      "seeds": [
+        42,
+        43,
+        44
+      ],
+      "n_runs": 3,
+      "data_kind": [
+        "synthetic"
+      ],
+      "n_test": [
+        4
+      ],
+      "predicted_positive_per_run": [
+        1,
+        3,
+        3
+      ],
+      "accuracy": {
+        "mean": 0.75,
+        "std": 0.0,
+        "n_defined": 3,
+        "n_runs": 3
+      },
+      "precision": {
+        "mean": 0.7777777777777777,
+        "std": 0.1924500897298753,
+        "n_defined": 3,
+        "n_runs": 3
+      },
+      "recall": {
+        "mean": 0.8333333333333334,
+        "std": 0.28867513459481287,
+        "n_defined": 3,
+        "n_runs": 3
+      },
+      "specificity": {
+        "mean": 0.6666666666666666,
+        "std": 0.28867513459481287,
+        "n_defined": 3,
+        "n_runs": 3
+      },
+      "f1": {
+        "mean": 0.7555555555555555,
+        "std": 0.07698003589195015,
+        "n_defined": 3,
+        "n_runs": 3
+      },
+      "roc_auc": {
+        "mean": 1.0,
+        "std": 0.0,
+        "n_defined": 3,
+        "n_runs": 3
+      },
+      "train_seconds": {
+        "mean": 1.09362812366669,
+        "std": 0.06129118347331672,
+        "n_defined": 3,
+        "n_runs": 3
+      },
+      "selected_epoch": {
+        "mean": 4.666666666666667,
+        "std": 0.5773502691896257,
+        "n_defined": 3,
+        "n_runs": 3
+      }
+    }
+  ]
+}

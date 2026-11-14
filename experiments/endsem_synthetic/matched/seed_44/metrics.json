@@ -1,0 +1,31 @@
+{
+  "n": 4,
+  "threshold": 0.5,
+  "accuracy": 1.0,
+  "precision": 1.0,
+  "recall": 1.0,
+  "specificity": 1.0,
+  "f1": 1.0,
+  "roc_auc": 1.0,
+  "confusion_matrix": [
+    [
+      2,
+      0
+    ],
+    [
+      0,
+      2
+    ]
+  ],
+  "data_kind": "synthetic",
+  "model": "matched",
+  "q_layers": null,
+  "architecture": "Matched-bottleneck classical CNN (8 -> Linear(8,8)+tanh -> 1)",
+  "seed": 44,
+  "selected_epoch": 5,
+  "epochs_run": 5,
+  "parameters": 479705,
+  "train_seconds": 0.616811202000008,
+  "elapsed_seconds": 0.6304735069999765,
+  "clinical_validation": false
+}
