@@ -21,6 +21,6 @@
   "model": "classical",
   "selected_epoch": 4,
   "parameters": 7391873,
-  "elapsed_seconds": 2.402091665000171,
+  "elapsed_seconds": 1.3071355060000087,
   "clinical_validation": false
 }
