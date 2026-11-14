@@ -26,7 +26,7 @@ Expected: `Ran 39 tests` … `OK`.
 
 ## 3. Data, checkpoints and the experiment
 
-The submission ZIP already contains `demo_data/`, all checkpoints and all results, so you can skip this step there. After a fresh `git clone`, run:
+The submission ZIP already contains `demo_data/`, the checkpoints and all results, so you can skip this step there. To keep the ZIP small it omits the three original-classical experiment checkpoints (`experiments/endsem_synthetic/classical/seed_*/best.pt`, 29.6 MB each); every other file of those runs is included. To rebuild one, train it into a new folder, for example `python -m src.train --manifest demo_data/manifest.csv --out runs/classical_s43 --model classical --seed 43 --epochs 5 --data-kind synthetic`. After a fresh `git clone`, run:
 
 ```bash
 python -m src.demo_data --out demo_data
