@@ -1,3 +1,19 @@
+test_demo_samples_regenerate_when_missing (test_endsem.AppInputs.test_demo_samples_regenerate_when_missing) ... ok
+test_discovery_and_deterministic_inference (test_endsem.AppInputs.test_discovery_and_deterministic_inference) ... ok
+test_invalid_uploads_get_helpful_errors (test_endsem.AppInputs.test_invalid_uploads_get_helpful_errors) ... ok
+test_both_pages_render_without_exceptions (test_endsem.AppSmoke.test_both_pages_render_without_exceptions) ... 2026-11-14 15:40:25.088 WARNING streamlit.runtime.scriptrunner_utils.script_run_context: Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+ok
+test_depth_roundtrip_rebuilds_correct_model (test_endsem.CheckpointMetadata.test_depth_roundtrip_rebuilds_correct_model) ... ok
+test_legacy_checkpoint_without_depth_loads_as_three_layers (test_endsem.CheckpointMetadata.test_legacy_checkpoint_without_depth_loads_as_three_layers) ... ok
+test_matched_checkpoint_roundtrip (test_endsem.CheckpointMetadata.test_matched_checkpoint_roundtrip) ... ok
+test_mislabelled_depth_gives_clear_error (test_endsem.CheckpointMetadata.test_mislabelled_depth_gives_clear_error) ... ok
+test_build_model_guards (test_endsem.DepthAndComparator.test_build_model_guards) ... ok
+test_invalid_depth_rejected (test_endsem.DepthAndComparator.test_invalid_depth_rejected) ... ok
+test_matched_comparator_shapes_and_parameters (test_endsem.DepthAndComparator.test_matched_comparator_shapes_and_parameters) ... ok
+test_one_and_three_layer_construction (test_endsem.DepthAndComparator.test_one_and_three_layer_construction) ... ok
+test_one_layer_gradients_finite_and_nonzero (test_endsem.DepthAndComparator.test_one_layer_gradients_finite_and_nonzero) ... ok
+test_aggregate_handles_undefined_metrics (test_endsem.ExperimentRunner.test_aggregate_handles_undefined_metrics) ... ok
+test_runner_end_to_end_and_refuses_rerun (test_endsem.ExperimentRunner.test_runner_end_to_end_and_refuses_rerun) ... ok
 test_bad_probabilities (test_project.DataTests.test_bad_probabilities) ... ok
 test_bad_shape (test_project.DataTests.test_bad_shape) ... ok
 test_duplicates (test_project.DataTests.test_duplicates) ... ok
@@ -10,8 +26,20 @@ test_undefined (test_project.DataTests.test_undefined) ... ok
 test_checkpoint_roundtrip (test_project.ModelTests.test_checkpoint_roundtrip) ... ok
 test_hybrid_gradients (test_project.ModelTests.test_hybrid_gradients) ... ok
 test_parameter_counts (test_project.ModelTests.test_parameter_counts) ... ok
+test_case_variant_patient_ids_rejected (test_robustness.ManifestRobustness.test_case_variant_patient_ids_rejected) ... ok
+test_eight_bit_crop_rejected_with_hint (test_robustness.ManifestRobustness.test_eight_bit_crop_rejected_with_hint) ... ok
+test_missing_fields_give_line_number (test_robustness.ManifestRobustness.test_missing_fields_give_line_number) ... ok
+test_non_npy_file_rejected (test_robustness.ManifestRobustness.test_non_npy_file_rejected) ... ok
+test_split_seed_controls_fallback_split (test_robustness.ManifestRobustness.test_split_seed_controls_fallback_split) ... ok
+test_spreadsheet_style_values_are_normalised (test_robustness.ManifestRobustness.test_spreadsheet_style_values_are_normalised) ... ok
+test_whitespace_patient_id_cannot_hide_leakage (test_robustness.ManifestRobustness.test_whitespace_patient_id_cannot_hide_leakage) ... ok
+test_clear_errors_instead_of_tracebacks (test_robustness.PredictCLI.test_clear_errors_instead_of_tracebacks) ... ok
+test_diagnose_reports_signal_spread (test_robustness.PredictCLI.test_diagnose_reports_signal_spread) ... ok
+test_valid_prediction_is_labelled_uncalibrated (test_robustness.PredictCLI.test_valid_prediction_is_labelled_uncalibrated) ... ok
+test_evidence_files_have_no_absolute_paths (test_robustness.TrainingEvidence.test_evidence_files_have_no_absolute_paths) ... ok
+test_refuses_nonempty_output_directory (test_robustness.TrainingEvidence.test_refuses_nonempty_output_directory) ... ok
 
 ----------------------------------------------------------------------
-Ran 12 tests in 2.846s
+Ran 39 tests in 5.591s
 
 OK

@@ -61,7 +61,8 @@ def ensure_demo_samples(root=ROOT):
     manifest = Path(root) / 'demo_data' / 'manifest.csv'
     if not manifest.is_file():
         create_demo(manifest.parent)
-    rows = list(csv.DictReader(manifest.open()))
+    with manifest.open(newline='') as f:
+        rows = list(csv.DictReader(f))
     for r in rows:
         r['abs_path'] = manifest.parent / r['path']
     return rows
